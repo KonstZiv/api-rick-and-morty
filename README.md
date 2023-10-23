@@ -3,6 +3,7 @@
 ---
 
 ### Requirement:
+
 1. Endpoint, which return random character from the world of Rick and Morty series.
 2. Endpoint get search_string as an argument and return list of all characters, who contains the search_string  in the name.
 3. On regular basis, pp downloads data from external service inner DB.
