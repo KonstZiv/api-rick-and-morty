@@ -13,6 +13,5 @@ pathspec==0.11.2
 platformdirs==3.11.0
 pycodestyle==2.11.1
 pyflakes==3.1.0
-requests==2.31.0
 sqlparse==0.4.4
 urllib3==2.0.7
