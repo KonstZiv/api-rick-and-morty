@@ -36,6 +36,7 @@ class CharacterListView(generics.ListAPIView):
         return queryset
 
     @extend_schema(
+        # extra parameters added to the schema
         parameters=[
             OpenApiParameter(
                 name="inc_in_name",
@@ -45,14 +46,14 @@ class CharacterListView(generics.ListAPIView):
                 examples=[
                     OpenApiExample(
                         "Example:",
-                        summary="search with passing parameters",
-                        description="Search for all characters whose name includes 'god'",
+                        summary="Search with passing parameters",
+                        description="Search for all characters whole name includes 'god'",
                         value="god",
                     ),
                 ],
             ),
-        ],
+        ]
     )
     def get(self, request, *args, **kwargs):
-        """List characters with filter bu name."""
+        """List characters with filter by name."""
         return super().get(request, *args, **kwargs)
