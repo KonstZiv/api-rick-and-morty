@@ -2,6 +2,7 @@ from typing import Callable
 
 import requests
 from django.conf import settings
+from django.db import IntegrityError
 
 from characters.models import Character
 
@@ -37,11 +38,28 @@ def scrape_all_pages(
     return characters_all
 
 
-def save_characters(characters: list[Character]):
-    objs = Character.objects.bulk_create(characters)
-    return objs
+def save_or_update_characters(characters: list[Character]):
+    updated = 0
+    created = 0
+    for character in characters:
+        try:
+            character.save()
+            created += 1
+        except IntegrityError:
+            Character.objects.filter(api_id=character.api_id).update(
+                name=character.name,
+                status=character.status,
+                species=character.species,
+                gender=character.gender,
+                image=character.image,
+            )
+            updated += 1
+
+    return {"updated": updated, "created": created}
 
 
-def sync_characters_with_api(url: str = settings.API_RICK_AND_MORTY_URL) -> None:
+def sync_characters_with_api(
+    url: str = settings.API_RICK_AND_MORTY_URL,
+) -> dict[str, int]:
     characters = scrape_all_pages(url, scrape_page)
-    save_characters(characters)
+    return save_or_update_characters(characters)

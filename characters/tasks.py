@@ -1,10 +1,8 @@
-# Create your tasks here
-
-from characters.models import Character
-
 from celery import shared_task
+
+from characters.scraper import sync_characters_with_api
 
 
 @shared_task
-def count_characters():
-    return Character.objects.count()
+def sync_db():
+    return sync_characters_with_api()
