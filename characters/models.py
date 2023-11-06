@@ -22,3 +22,21 @@ class Character(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def __key(self):
+        return (
+            self.api_id,
+            self.name,
+            self.status,
+            self.species,
+            self.gender,
+            self.image,
+        )
+
+    def __eq__(self, other):
+        if isinstance(other, Character):
+            return self.__key() == other.__key()
+        raise NotImplemented
+
+    def __hash__(self):
+        return hash(self.__key())

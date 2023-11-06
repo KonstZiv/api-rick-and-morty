@@ -15,3 +15,31 @@ Technologies to use:
 2. Use Celery as task scheduler for data synchronization for Rick & Morty API.
 3. Python, Django/Flask/FastAPI, ORM, PostgreSQL, GIT
 4. All endpoints should be documented via Swagger.
+
+---
+
+## preconditions:
+
+## - git and docker must be installed
+
+
+## Clone project:
+
+```bash
+git clone https://github.com/KonstZiv/api-rick-and-morty.git
+```
+
+## Start project
+
+```bash
+$ docker-compose up --build
+```
+
+## Resources are available within the project:
+
+- API endpoints:
+    - http://127.0.0.1:8000/api/v1/characters/random/
+    - http://127.0.0.1:8000/api/v1/characters/
+- documentation (Swagger) - http://127.0.0.1:8000/api/v1/doc/swagger/
+- administrative panel (superuser access) - http://127.0.0.1:8000/admin/
+- task control panel (Flower) - http://127.0.0.1:5555/

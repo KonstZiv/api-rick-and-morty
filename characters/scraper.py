@@ -41,7 +41,10 @@ def scrape_all_pages(
 def save_or_update_characters(characters: list[Character]):
     updated = 0
     created = 0
-    for character in characters:
+    characters_api = characters
+    characters_db = Character.objects.all()
+    characters_diff = set(characters_api) - set(characters_db)
+    for character in characters_diff:
         try:
             character.save()
             created += 1
