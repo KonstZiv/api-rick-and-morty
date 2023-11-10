@@ -23,7 +23,7 @@ class Character(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def __key(self):
+    def _key(self):
         return (
             self.api_id,
             self.name,
@@ -34,9 +34,9 @@ class Character(models.Model):
         )
 
     def __eq__(self, other):
-        if isinstance(other, Character):
-            return self.__key() == other.__key()
-        raise NotImplemented
+        if not isinstance(other, Character):
+            raise NotImplemented
+        return self._key() == other._key()
 
     def __hash__(self):
-        return hash(self.__key())
+        return hash(self._key())

@@ -27,6 +27,7 @@ Technologies to use:
 
 ```bash
 git clone https://github.com/KonstZiv/api-rick-and-morty.git
+cd api-rick-and-morty
 ```
 
 ## Start project
