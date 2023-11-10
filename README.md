@@ -44,3 +44,6 @@ $ docker-compose up --build
 - documentation (Swagger) - http://127.0.0.1:8000/api/v1/doc/swagger/
 - administrative panel (superuser access) - http://127.0.0.1:8000/admin/
 - task control panel (Flower) - http://127.0.0.1:5555/
+
+---
+
