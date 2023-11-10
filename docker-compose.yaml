@@ -54,5 +54,16 @@ services:
     depends_on:
       - celery_worker
 
+ flower:
+    build:
+      context: .
+    command: celery -A api_rick_and_morty flower
+    env_file:
+      - .env
+    ports:
+      - "5555:5555"
+    depends_on:
+      - celery_worker
+
 volumes:
   my_db:
