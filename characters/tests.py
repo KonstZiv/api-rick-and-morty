@@ -4,9 +4,6 @@ from django.urls import reverse
 from characters.models import Character
 
 
-# Create your tests here.
-
-
 class TestModelCharacter(TestCase):
     def test_str(self):
         character = Character.objects.create(
@@ -52,4 +49,7 @@ class TestViews(TestCase):
             res,
             self.character_2.name,
             msg_prefix="Search by parameter in the name does not work: ",
+        )
+        self.assertEqual(
+            1, len(res.json()["results"]), "Response include more then one result."
         )
