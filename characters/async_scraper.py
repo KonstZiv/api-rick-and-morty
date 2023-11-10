@@ -1,5 +1,4 @@
 import asyncio
-import os
 from typing import Tuple, Optional, List
 
 import aiohttp
@@ -8,8 +7,6 @@ from django.db import IntegrityError
 from dataclasses import dataclass, asdict
 
 from characters.models import Character
-
-os.environ["PYTHONHASHSEED"] = "0"
 
 
 @dataclass
